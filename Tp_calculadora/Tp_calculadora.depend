@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1554147427 source:c:\users\e5eee78\desktop\tp_calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	"calculadora.h"
+
+1554406698 ra.h"
+
+1554401146 c:\users\e5eee78\desktop\tp_calculadora\calculadora.h
+
+1554406698 source:c:\users\e5eee78\desktop\tp_calculadora\calculadora.c
+	<stdio.h>
+	<stdlib.h>
+	"calculadora.h"
+
+1554406700 source:/home/alumno/Descargas/Tp_calculadora/calculadora.c
+	<stdio.h>
+	<stdlib.h>
+	"calculadora.h"
+
+1554401148 /home/alumno/Descargas/Tp_calculadora/calculadora.h
+
+1554147428 source:/home/alumno/Descargas/Tp_calculadora/main.c
+	<stdio.h>
+	<stdlib.h>
+	"calculadora.h"
+
