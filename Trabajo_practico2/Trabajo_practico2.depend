@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1557516106 source:c:\users\e5eee78\desktop\trabajo_practico2\utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+	"ArrayEmployees.h"
+
+1557518377 c:\users\e5eee78\desktop\trabajo_practico2\utn_strings.h
+
+1557518377 source:c:\users\e5eee78\desktop\trabajo_practico2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"utn_strings.h"
+
+1556893779 c:\users\e5eee78\desktop\trabajo_practico2\biblioteca.h
+
+1557242519 source:c:\users\e5eee78\desktop\trabajo_practico2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"utn_strings.h"
+
+1557500632 c:\users\e5eee78\desktop\trabajo_practico2\arrayemployees.h
+
+1557409252 source:c:\users\e5eee78\desktop\trabajo_practico2\biblioteca.c
+
