@@ -28,3 +28,28 @@
 
 1557409252 source:c:\users\e5eee78\desktop\trabajo_practico2\biblioteca.c
 
+1557545585 source:d:\ariel\desktop\abm-master\trabajo_practico2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"utn_strings.h"
+
+1557547574 d:\ariel\desktop\abm-master\trabajo_practico2\arrayemployees.h
+
+1557545586 d:\ariel\desktop\abm-master\trabajo_practico2\utn_strings.h
+
+1557545586 source:d:\ariel\desktop\abm-master\trabajo_practico2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"utn_strings.h"
+
+1557545586 source:d:\ariel\desktop\abm-master\trabajo_practico2\utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+	"ArrayEmployees.h"
+
