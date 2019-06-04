@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
 
-Employee* employee_new(void)
+Employee* employee_new()
 {
     return (Employee*) malloc(sizeof(Employee));
 }
@@ -17,16 +18,16 @@ Employee* employee_newParametros(char* idStr,
     Employee* retorno = NULL;
     Employee* pAuxEmployee;
 
-    if( id != NULL && nombre != NULL &&
-        horasTrabajadasStr != NULL && sueldo != NULL)
+    if( idStr != NULL && nombreStr != NULL &&
+        horasTrabajadasStr != NULL && sueldoStr != NULL)
     {
-        pAuxEmployee = Emp_new();
+        pAuxEmployee = employee_new();
         if(pAuxEmployee != NULL)
         {
             if( !employee_setNombre(pAuxEmployee, nombreStr) &&
                 !employee_setHorasTrabajadas(pAuxEmployee, horasTrabajadasStr) &&
-                !employee_setIdStr(pAuxEmployee, idStr) &&
-                !employee_setSueldoStr(pAuxEmployee, sueldoStr))
+                !employee_setId(pAuxEmployee, idStr) &&
+                !employee_setSueldo(pAuxEmployee, sueldoStr))
             {
                 retorno = pAuxEmployee;
             }
@@ -36,6 +37,7 @@ Employee* employee_newParametros(char* idStr,
             }
         }
     }
+    return retorno;
 }
 
 void employee_delete()
@@ -62,9 +64,9 @@ int employee_setId(Employee* this, int id)
 int employee_getId(Employee* this, int* id)
 {
     int retorno = -1;
-    if(this != NULL && resultado != NULL)
+    if(this != NULL && id != NULL)
     {
-        *resultado = this->id;
+        *id = this->id;
         retorno = 0;
     }
     return retorno;
@@ -73,7 +75,7 @@ int employee_getId(Employee* this, int* id)
 int employee_setNombre(Employee* this, char* nombre)
 {
     int retorno = -1;
-    if(this != NULL && nombre >= 0)
+    if(this != NULL)
     {
         strcpy(this->nombre,nombre);
         retorno = 0;
@@ -84,9 +86,9 @@ int employee_setNombre(Employee* this, char* nombre)
 int employee_getNombre(Employee* this, char* nombre)
 {
     int retorno = -1;
-    if(this != NULL && resultado != NULL)
+    if(this != NULL && nombre != NULL)
     {
-        strcpy(this->nombre,resultado);
+        strcpy(this->nombre,nombre);
         retorno = 0;
     }
     return retorno;

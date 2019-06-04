@@ -23,11 +23,14 @@ int main()
 {
     int option = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
+
     do{
+        printf("A ver si no se muere el programa: ");
+        scanf("%d", &option);
         switch(option)
         {
             case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
+                controller_loadFromText("data.csv", listaEmpleados);
                 break;
         }
     }while(option != 10);
