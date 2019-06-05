@@ -1,3 +1,6 @@
+#ifndef CONTROLLER_H_INCLUDED
+#define CONTROLLER_H_INCLUDED
+
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -73,3 +76,5 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
  *
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
+
+#endif
