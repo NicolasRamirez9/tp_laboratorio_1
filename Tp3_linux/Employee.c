@@ -25,9 +25,9 @@ Employee* employee_newParametros(char* idStr,
         if(pAuxEmployee != NULL)
         {
             if( !employee_setNombre(pAuxEmployee, nombreStr) &&
-                !employee_setHorasTrabajadas(pAuxEmployee, horasTrabajadasStr) &&
-                !employee_setId(pAuxEmployee, idStr) &&
-                !employee_setSueldo(pAuxEmployee, sueldoStr))
+                !employee_setHorasTrabajadasStr(pAuxEmployee, horasTrabajadasStr) &&
+                !employee_setIdStr(pAuxEmployee, idStr) &&
+                !employee_setSueldoStr(pAuxEmployee, sueldoStr))
             {
                 retorno = pAuxEmployee;
             }
@@ -40,10 +40,8 @@ Employee* employee_newParametros(char* idStr,
     return retorno;
 }
 
-void employee_delete()
+void employee_delete(Employee* this)
 {
-    Employee* this;
-
     if(this != NULL)
     {
         free(this);
@@ -57,6 +55,16 @@ int employee_setId(Employee* this, int id)
     {
         this->id = id;
         retorno = 0;
+    }
+    return retorno;
+}
+
+int employee_setIdStr(Employee* this, char* id)
+{
+    int retorno = -1;
+    if(this != NULL && id >= 0)
+    {
+        retorno = employee_setId(this, atoi(id));
     }
     return retorno;
 }
@@ -105,6 +113,16 @@ int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
     return retorno;
 }
 
+int employee_setHorasTrabajadasStr(Employee* this, char* horasTrabajadas)
+{
+    int retorno = -1;
+    if(this != NULL && horasTrabajadas >= 0)
+    {
+        retorno = employee_setHorasTrabajadas(this, atoi(horasTrabajadas));
+    }
+    return retorno;
+}
+
 int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
 {
     int retorno = -1;
@@ -123,6 +141,16 @@ int employee_setSueldo(Employee* this, int sueldo)
     {
         this->sueldo = sueldo;
         retorno = 0;
+    }
+    return retorno;
+}
+
+int employee_setSueldoStr(Employee* this, char* sueldo)
+{
+    int retorno = -1;
+    if(this != NULL && sueldo >= 0)
+    {
+        retorno = employee_setSueldo(this, atoi(sueldo));
     }
     return retorno;
 }

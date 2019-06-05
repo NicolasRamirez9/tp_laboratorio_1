@@ -12,12 +12,10 @@
  */
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-    int i = 0;
-    int flag=0;
-    char bufferId[50];
-    char bufferName[50];
-    char bufferHorasTrabajadas[50];
-    char bufferSueldo[50];
+    char bufferId[4000];
+    char bufferName[4000];
+    char bufferHorasTrabajadas[4000];
+    char bufferSueldo[4000];
 
     if(pFile != NULL && pArrayListEmployee != NULL)
     {
@@ -29,11 +27,6 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
                    bufferName,
                    bufferHorasTrabajadas,
                    bufferSueldo);
-            if(flag == 0)
-            {
-                flag++;
-            }
-            i++;
             printf("ID empleado: %s | Nombre: %s | Horas trabajadas: %s | Sueldo: %s\n",
                    bufferId,
                    bufferName,
