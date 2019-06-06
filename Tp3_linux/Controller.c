@@ -62,7 +62,39 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
+    char bufferId;
+    char bufferName[4000];
+    char bufferHorasTrabajadas[4000];
+    char bufferSueldo[4000];
 
+    if(pArrayEmployee != NULL)
+    {
+        if(!getName(bufferName,
+                    "\n Ingrese nombre del empleado: ",
+                    "\n Error, vuelva a ingresar el nombre del empleado: ",
+                    1,
+                    100,
+                    2))
+        {
+            if(!getInt("\n Ingrese las horas trabajadas del empleado: ",
+                    "\n Error, vuelva a ingresar las horas trabajadas del empleado: ",
+                    0,
+                    100,
+                    2,
+                    bufferHorasTrabajadas))
+            {
+                if(!getFloat("\n Ingrese sueldo del empleado: ",
+                             "\n Error, vuelva a ingresar el sueldo del empleado: ",
+                             0,
+                             10000000,
+                             2,
+                             bufferSueldo))
+                {
+                    aux
+                }
+            }
+        }
+    }
     return 1;
 }
 
@@ -138,3 +170,28 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     return 1;
 }
 
+int generarId(LinkedList* pArrayListEmployee)
+{
+    Employee* auxEmployee;
+    int len;
+    int idActual;
+    int maxID = -1;
+    int i;
+
+    if(pArrayListEmployee != NULL && auxEmployee != NULL)
+    {
+        len = ll_len(pArrayListEmployee);
+
+        for(i=0; i<len; i++)
+        {
+            auxEmployee = ll_get(pArrayListEmployee, i);
+            employee_getId(auxEmployee, &idActual);
+            if(idActual > maxID)
+            {
+                maxID = idActual;
+            }
+        }
+    }
+    maxID ++;
+    return maxID;
+}
