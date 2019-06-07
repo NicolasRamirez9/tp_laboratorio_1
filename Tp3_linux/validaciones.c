@@ -12,7 +12,7 @@ int getString(char* msg,char* msgE,int minimo,int maximo,int reintentos,char* re
         do
         {
             printf("\n%s",msg);
-            fflush(stdin);
+            __fpurge(stdin); //fflush(stdin);
             fgets(bufferStr,sizeof(bufferStr),stdin);
             bufferStr[strlen(bufferStr)-1] = '\0';
             if(strlen(bufferStr) >= minimo && strlen(bufferStr)<maximo)

@@ -53,19 +53,20 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1559856500 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Controller.c
+1559867746 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 	"Controller.h"
 	"parser.h"
+	"validaciones.h"
 
 1559856500 /home/alumno/tp_laboratorio_1/Tp3_linux/LinkedList.h
 
-1559856500 /home/alumno/tp_laboratorio_1/Tp3_linux/Employee.h
+1559867799 /home/alumno/tp_laboratorio_1/Tp3_linux/Employee.h
 
-1559856500 source:/home/alumno/tp_laboratorio_1/Tp3_linux/main.c
+1559866066 source:/home/alumno/tp_laboratorio_1/Tp3_linux/main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -81,7 +82,7 @@
 	"Employee.h"
 	"Controller.h"
 
-1559856500 source:/home/alumno/tp_laboratorio_1/Tp3_linux/validaciones.c
+1559866150 source:/home/alumno/tp_laboratorio_1/Tp3_linux/validaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -89,7 +90,7 @@
 
 1559856500 /home/alumno/tp_laboratorio_1/Tp3_linux/validaciones.h
 
-1559856500 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Employee.c
+1559867758 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

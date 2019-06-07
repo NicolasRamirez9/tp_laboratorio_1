@@ -32,6 +32,9 @@ int main()
             case 1:
                 controller_loadFromText("data.csv", listaEmpleados);
                 break;
+            case 3:
+                controller_addEmployee(listaEmpleados);
+                break;
         }
     }while(option != 10);
     return 0;

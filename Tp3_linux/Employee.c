@@ -165,3 +165,20 @@ int employee_getSueldo(Employee* this, int* sueldo)
     }
     return retorno;
 }
+
+int employee_compararPorNombre(void* this1, void* this2)
+{
+    char auxStrA[4096];
+    char auxStrB[4096];
+    employee_getNombre((Employee*)this1, auxStrA);
+    employee_getNombre((Employee*)this2, auxStrB);
+    if(strcmp(auxStrA, auxStrB) > 0)
+    {
+        return 1;
+    }
+    else if(strcmp(auxStrA, auxStrB) < 0)
+    {
+        return -1;
+    }
+    return 0;
+}
