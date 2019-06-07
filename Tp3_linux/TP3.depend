@@ -53,7 +53,7 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1559867746 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Controller.c
+1559869690 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -90,7 +90,7 @@
 
 1559856500 /home/alumno/tp_laboratorio_1/Tp3_linux/validaciones.h
 
-1559867758 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Employee.c
+1559868339 source:/home/alumno/tp_laboratorio_1/Tp3_linux/Employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -23,30 +23,28 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
     if(path != NULL && pArrayListEmployee != NULL)
     {
         pFile = fopen(path, "r");
-
         if(pFile != NULL)
         {
             while(!feof(pFile))
             {
-                fread(&auxEmpleado, sizeof(Employee), 1, pFile);
+                fread(&auxEmpleado,sizeof(Employee),1,pFile);
                 pEmpleado = employee_new();
-                if( !employee_setId(pEmpleado, auxEmpleado.id) &&
-                    !employee_setNombre(pEmpleado, auxEmpleado.nombre) &&
-                    !employee_setHorasTrabajadas(pEmpleado, auxEmpleado.horasTrabajadas) &&
-                    !employee_getSueldo(pEmpleado, auxEmpleado.sueldo))
+                if( !employee_setId(pEmpleado,auxEmpleado.id) &&
+                    !employee_setNombre(pEmpleado,auxEmpleado.nombre) &&
+                    !employee_setHorasTrabajadas(pEmpleado,auxEmpleado.horasTrabajadas) &&
+                    !employee_setSueldo(pEmpleado,auxEmpleado.sueldo))
                 {
-                    ll_add(pArrayListEmployee, pEmpleado);
+                     ll_add(pArrayListEmployee,pEmpleado);
                 }
                 else
                 {
                     employee_delete(pEmpleado);
                 }
-
             }
+            retorno = 0;
+            fclose(pFile);
+            ll_sort(pArrayListEmployee,employee_compararPorNombre,0);
         }
-        retorno = 0;
-        fclose(pFile);
-        ll_sort(pArrayListEmployee, employee_compararPorNombre, 0);
     }
     return retorno;
 }
