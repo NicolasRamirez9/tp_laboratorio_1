@@ -182,3 +182,56 @@ int employee_compararPorNombre(void* this1, void* this2)
     }
     return 0;
 }
+
+int employee_idGenerator(LinkedList* pArrayListEmployee)
+{
+    Employee* auxEmployee = NULL;
+    int len;
+    int idActual;
+    int maxID = -1;
+    int i;
+
+    if(pArrayListEmployee != NULL && auxEmployee != NULL)
+    {
+        len = ll_len(pArrayListEmployee);
+
+        for(i=0; i<len; i++)
+        {
+            auxEmployee = ll_get(pArrayListEmployee, i);
+            employee_getId(auxEmployee, &idActual);
+            if(idActual > maxID)
+            {
+                maxID = idActual;
+            }
+        }
+    }
+    maxID ++;
+    return maxID;
+}
+
+int employee_searchId (LinkedList* pArrayListEmployee, int *idEncontrado)
+{
+    int retorno = -1;
+    int i;
+    int id;
+    int auxId;
+    int len;
+    Employee *auxEmpleado;
+
+    printf("\n Ingrese ID que quiere buscar: ");
+    scanf("%d", &auxId);
+    len = ll_len(pArrayListEmployee);
+
+    for(i=0; i<len; i++)
+    {
+        auxEmpleado = ll_get(pArrayListEmployee, i);
+        employee_getId(auxEmpleado,&id);
+        if (id == auxId)
+        {
+            retorno = 0;
+            *idEncontrado = i;
+            break;
+        }
+    }
+    return retorno;
+}

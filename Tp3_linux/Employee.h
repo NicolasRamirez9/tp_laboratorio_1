@@ -27,4 +27,6 @@ int employee_setSueldo(Employee* this, int sueldo);
 int employee_setSueldoStr(Employee* this, char* sueldo);
 int employee_getSueldo(Employee* this, int* sueldo);
 int employee_compararPorNombre(void* this1, void* this2);
+int employee_idGenerator(LinkedList* pArrayListEmployee);
+int employee_searchId (LinkedList* pArrayListEmployee, int *idEncontrado);
 #endif // employee_H_INCLUDED
