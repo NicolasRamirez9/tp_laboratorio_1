@@ -12,7 +12,7 @@ int getString(char* msg,char* msgE,int minimo,int maximo,int reintentos,char* re
         do
         {
             printf("\n%s",msg);
-            __fpurge(stdin); //fflush(stdin);
+            fflush(stdin);// __fpurge(stdin);
             fgets(bufferStr,sizeof(bufferStr),stdin);
             bufferStr[strlen(bufferStr)-1] = '\0';
             if(strlen(bufferStr) >= minimo && strlen(bufferStr)<maximo)
@@ -77,15 +77,28 @@ int getFloat(char *msg, char *msgE, char minimo, char maximo, int reintentos, ch
 int getName(char* pStr, char* msg, char* msgE,int minimo,int maximo,int reintentos)
 {
     int ret = -1;
-    char bufferStr[4000];
-    if(msg != NULL && msgE != NULL && pStr != NULL && reintentos >=0 && maximo > minimo)
+    char bufferStr[4096];
+
+    while(ret == -1)
     {
-        if(!getString(msg,msgE,minimo,maximo,reintentos,bufferStr))
+        if(msg != NULL &&
+           msgE != NULL &&
+           pStr != NULL &&
+           reintentos >=0 &&
+           maximo > minimo)
         {
-            if(isValidName(bufferStr))
+            if(!getString(msg, msgE, minimo, maximo, reintentos, bufferStr))
             {
-                strncpy(pStr, bufferStr, maximo);
-                ret = 0;
+                if(isValidName(bufferStr))
+                {
+                    strncpy(pStr, bufferStr, maximo);
+                    ret = 0;
+                    break;
+                }
+                else
+                {
+                    printf("%s",msgE);
+                }
             }
         }
     }

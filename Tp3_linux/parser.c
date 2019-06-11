@@ -12,37 +12,47 @@
  */
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-    char bufferId[4000];
-    char bufferName[4000];
-    char bufferHorasTrabajadas[4000];
-    char bufferSueldo[4000];
+    int retorno = -1;
+    char bufferId[4096];
+    char bufferName[4096];
+    char bufferHorasTrabajadas[4096];
+    char bufferSueldo[4096];
+    int flag = 0;
     Employee *auxEmployee;
 
-    fscanf(pFile,
-           "%[^,],%[^,],%[^,],%[^\n]\n",
-           bufferId,
-           bufferName,
-           bufferHorasTrabajadas,
-           bufferSueldo);
     if(pFile != NULL && pArrayListEmployee != NULL)
     {
         while(!feof(pFile))
         {
+            retorno = 0;
             fscanf(pFile,
                    "%[^,],%[^,],%[^,],%[^\n]\n",
                    bufferId,
                    bufferName,
                    bufferHorasTrabajadas,
                    bufferSueldo);
+            if(flag == 0)
+            {
+                flag ++;
+                continue;
+            }
             auxEmployee = employee_newParametros(bufferId,
                                                  bufferName,
                                                  bufferHorasTrabajadas,
                                                  bufferSueldo);
-            ll_add(pArrayListEmployee, auxEmployee);
+             printf("ID empleado: %s | Nombre: %s | Horas trabajadas: %s | Sueldo: %s\n",
+                   bufferId,
+                   bufferName,
+                   bufferHorasTrabajadas,
+                   bufferSueldo);
+            if(auxEmployee != NULL)
+            {
+                ll_add(pArrayListEmployee, auxEmployee);
+            }
         }
         fclose(pFile);
     }
-    return 1;
+    return retorno;
 }
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
