@@ -56,17 +56,14 @@ static Node* getNode(LinkedList* this, int nodeIndex)
     Node* pNode = NULL;
     int i;
 
-    if(this != NULL)
+    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this->size))
     {
-        if(nodeIndex >= 0 && nodeIndex < this->size)
+        pNode = this->pFirstNode;
+        if(pNode != NULL)
         {
-            pNode = this->pFirstNode;
-            if(pNode != NULL)
+            for(i=0; i<nodeIndex; i++)
             {
-                for(i=0; i<nodeIndex; i++)
-                {
-                    pNode = pNode->pNextNode;
-                }
+                pNode = pNode->pNextNode;
             }
         }
     }
@@ -86,18 +83,15 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
     Node* pNode = NULL;
     int i;
 
-    if(this != NULL)
+    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this->size))
     {
-        if(nodeIndex >= 0 && nodeIndex < this->size)
-        {
-            pNode = this->pFirstNode;
+        pNode = this->pFirstNode;
 
-            if(pNode != NULL)
+        if(pNode != NULL)
+        {
+            for(i=0; i<nodeIndex; i++)
             {
-                for(i=0; i<nodeIndex; i++)
-                {
-                    pNode = pNode->pNextNode;
-                }
+                pNode = pNode->pNextNode;
             }
         }
     }
@@ -117,9 +111,27 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
+    Node* pNodoActual;
+    Node* pNodoProximo;
 
+    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this->size))
+    {
+        if(ll_len(this->size) == 0)
+        {
+            printf("No hay nodos.");
+        }
+        else
+        {
+            pNodoActual = this->firstNode;
+
+        }
+
+    }
     return returnAux;
 }
+
+
+
 
 
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
@@ -153,7 +165,7 @@ int ll_add(LinkedList* this, void* pElement)
 
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
  *
- * \param this LinkedList* Puntero a la lista
+ * \param this LinkedList* Punt     ero a la lista
  * \param nodeIndex int Ubicacion del elemento a obtener
  * \return void* Retorna    (NULL) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
                             (pElement) Si funciono correctamente
