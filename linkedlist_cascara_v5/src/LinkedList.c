@@ -56,7 +56,7 @@ static Node* getNode(LinkedList* this, int nodeIndex)
     Node* pNode = NULL;
     int i;
 
-    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this->size))
+    if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
     {
         pNode = this->pFirstNode;
         if(pNode != NULL)
@@ -83,7 +83,7 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
     Node* pNode = NULL;
     int i;
 
-    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this->size))
+    if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
     {
         pNode = this->pFirstNode;
 
@@ -111,28 +111,36 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
-    Node* pNodoActual;
+    Node* pNodoAnterior;
     Node* pNodoProximo;
+    Node* pNodoNuevo;
 
-    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this->size))
+    if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
     {
-        if(ll_len(this->size) == 0)
+        if(nodeIndex == 0)
         {
-            printf("No hay nodos.");
+            pNodoAnterior = this->pFirstNode;
         }
         else
         {
-            pNodoActual = this->firstNode;
+            pNodoAnterior = getNode(this, nodeIndex - 1);
 
         }
 
+        pNodoProximo = pNodoAnterior->pNextNode;
+        pNodoNuevo = (Node*)malloc(sizeof(Node));
+
+        if(pNodoNuevo != NULL)
+        {
+            pNodoNuevo->pElement = pElement;
+            pNodoNuevo->pNextNode = pNodoProximo;
+            pNodoAnterior->pNextNode = pNodoNuevo;
+            this->size = this->size +1;
+            returnAux = 0;
+        }
     }
     return returnAux;
 }
-
-
-
-
 
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
  *
