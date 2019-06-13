@@ -4,6 +4,9 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "validaciones.h"
+#define EMPTY -1;
+#define FULL 1;
 
 Employee* employee_new()
 {
@@ -50,7 +53,7 @@ void employee_delete(Employee* this)
 
 int employee_setId(Employee* this, int id)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && id >= 0)
     {
         this->id = id;
@@ -61,7 +64,7 @@ int employee_setId(Employee* this, int id)
 
 int employee_setIdStr(Employee* this, char* id)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && id >= 0)
     {
         retorno = employee_setId(this, atoi(id));
@@ -71,7 +74,7 @@ int employee_setIdStr(Employee* this, char* id)
 
 int employee_getId(Employee* this, int* id)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && id != NULL)
     {
         *id = this->id;
@@ -82,10 +85,10 @@ int employee_getId(Employee* this, int* id)
 
 int employee_setNombre(Employee* this, char* nombre)
 {
-    int retorno = -1;
-    if(this != NULL)
+    int retorno = EMPTY;
+    if(this != NULL && nombre != NULL)
     {
-        strcpy(this->nombre,nombre);
+        strcpy(this->nombre, nombre);
         retorno = 0;
     }
     return retorno;
@@ -93,10 +96,10 @@ int employee_setNombre(Employee* this, char* nombre)
 
 int employee_getNombre(Employee* this, char* nombre)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && nombre != NULL)
     {
-        strcpy(this->nombre,nombre);
+        strcpy(nombre, this->nombre);
         retorno = 0;
     }
     return retorno;
@@ -104,7 +107,7 @@ int employee_getNombre(Employee* this, char* nombre)
 
 int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && horasTrabajadas >= 0)
     {
         this->horasTrabajadas = horasTrabajadas;
@@ -115,8 +118,8 @@ int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
 
 int employee_setHorasTrabajadasStr(Employee* this, char* horasTrabajadas)
 {
-    int retorno = -1;
-    if(this != NULL && horasTrabajadas >= 0)
+    int retorno = EMPTY;
+    if(this != NULL && horasTrabajadas != NULL)
     {
         retorno = employee_setHorasTrabajadas(this, atoi(horasTrabajadas));
     }
@@ -125,7 +128,7 @@ int employee_setHorasTrabajadasStr(Employee* this, char* horasTrabajadas)
 
 int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && horasTrabajadas != NULL)
     {
         *horasTrabajadas = this->horasTrabajadas;
@@ -136,7 +139,7 @@ int employee_getHorasTrabajadas(Employee* this, int* horasTrabajadas)
 
 int employee_setSueldo(Employee* this, int sueldo)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && sueldo >= 0)
     {
         this->sueldo = sueldo;
@@ -147,8 +150,8 @@ int employee_setSueldo(Employee* this, int sueldo)
 
 int employee_setSueldoStr(Employee* this, char* sueldo)
 {
-    int retorno = -1;
-    if(this != NULL && sueldo >= 0)
+    int retorno = EMPTY;
+    if(this != NULL && sueldo != NULL)
     {
         retorno = employee_setSueldo(this, atoi(sueldo));
     }
@@ -157,7 +160,7 @@ int employee_setSueldoStr(Employee* this, char* sueldo)
 
 int employee_getSueldo(Employee* this, int* sueldo)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     if(this != NULL && sueldo != NULL)
     {
         *sueldo = this->sueldo;
@@ -174,44 +177,46 @@ int employee_compararPorNombre(void* this1, void* this2)
     employee_getNombre((Employee*)this2, auxStrB);
     if(strcmp(auxStrA, auxStrB) > 0)
     {
-        return 1;
+        return FULL;
     }
     else if(strcmp(auxStrA, auxStrB) < 0)
     {
-        return -1;
+        return EMPTY;
     }
     return 0;
 }
 
 int employee_idGenerator(LinkedList* pArrayListEmployee)
 {
-    Employee* auxEmployee = NULL;
-    int len;
-    int idActual;
-    int maxID = -1;
+    int maxId = EMPTY;
+    int auxId;
     int i;
+    Employee* pEmployee;
 
-    if(pArrayListEmployee != NULL && auxEmployee != NULL)
+    if(pArrayListEmployee != NULL)
     {
-        len = ll_len(pArrayListEmployee);
-
-        for(i=0; i<len; i++)
+        for(i=0; i<ll_len(pArrayListEmployee); i++)
         {
-            auxEmployee = ll_get(pArrayListEmployee, i);
-            employee_getId(auxEmployee, &idActual);
-            if(idActual > maxID)
+            pEmployee = ll_get(pArrayListEmployee, i);
+
+            if(pEmployee != NULL)
             {
-                maxID = idActual;
+                employee_getId(pEmployee, &auxId);
+
+                if(auxId > maxId)
+                {
+                    maxId = auxId;
+                }
             }
         }
     }
-    maxID ++;
-    return maxID;
+    maxId ++;
+    return maxId;
 }
 
 int employee_searchId (LinkedList* pArrayListEmployee, int *idEncontrado)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     int i;
     int id;
     int auxId;
@@ -222,15 +227,18 @@ int employee_searchId (LinkedList* pArrayListEmployee, int *idEncontrado)
     scanf("%d", &auxId);
     len = ll_len(pArrayListEmployee);
 
-    for(i=0; i<len; i++)
+    if(pArrayListEmployee != NULL && idEncontrado != NULL)
     {
-        auxEmpleado = ll_get(pArrayListEmployee, i);
-        employee_getId(auxEmpleado,&id);
-        if (id == auxId)
+        for(i=0; i<len; i++)
         {
-            retorno = 0;
-            *idEncontrado = i;
-            break;
+            auxEmpleado = ll_get(pArrayListEmployee, i);
+            employee_getId(auxEmpleado,&id);
+            if (id == auxId && auxEmpleado != NULL)
+            {
+                retorno = 0;
+                *idEncontrado = i;
+                break;
+            }
         }
     }
     return retorno;

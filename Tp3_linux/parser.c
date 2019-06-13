@@ -3,6 +3,9 @@
 #include "LinkedList.h"
 #include "Employee.h"
 #include "Controller.h"
+#define EMPTY -1;
+#define FULL 1;
+
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -12,7 +15,7 @@
  */
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-    int retorno = -1;
+    int retorno = EMPTY;
     char bufferId[4096];
     char bufferName[4096];
     char bufferHorasTrabajadas[4096];
@@ -40,17 +43,16 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
                                                  bufferName,
                                                  bufferHorasTrabajadas,
                                                  bufferSueldo);
-             printf("ID empleado: %s | Nombre: %s | Horas trabajadas: %s | Sueldo: %s\n",
+           /*  printf("ID empleado: %s | Nombre: %s | Horas trabajadas: %s | Sueldo: %s\n",
                    bufferId,
                    bufferName,
                    bufferHorasTrabajadas,
-                   bufferSueldo);
+                   bufferSueldo); */
             if(auxEmployee != NULL)
             {
                 ll_add(pArrayListEmployee, auxEmployee);
             }
         }
-        fclose(pFile);
     }
     return retorno;
 }
@@ -64,37 +66,29 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-    int i = 0;
-    int flag=0;
-    char bufferId[50];
-    char bufferName[50];
-    char bufferHorasTrabajadas[50];
-    char bufferSueldo[50];
-
-    pFile = fopen("data.csv", "rb");
+    int retorno = EMPTY;
+    char bufferId[4096];
+    char bufferName[4096];
+    char bufferWorkedHours[4096];
+    char bufferSalary[4096];
+    Employee auxEmployee;
+    Employee *pEmployee = NULL;
 
     if(pFile != NULL && pArrayListEmployee != NULL)
     {
         while(!feof(pFile))
         {
-            fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n",
-                   bufferId,
-                   bufferName,
-                   bufferHorasTrabajadas,
-                   bufferSueldo);
-            if(flag == 0)
-            {
-                flag++;
+            retorno = 0;
+            fread(&auxEmployee, sizeof(Employee), 1, pFile);
 
+            if( !employee_setNombre(pEmployee, bufferName)&&
+                !employee_setHorasTrabajadasStr(pEmployee, bufferWorkedHours)&&
+                !employee_setIdStr(pEmployee, bufferId)&&
+                !employee_setSueldoStr(pEmployee, bufferSalary))
+            {
+                ll_add(pArrayListEmployee, pEmployee);
             }
-            i++;
-            printf("ID empleado: %s | Nombre: %s | Horas trabajadas: %s | Sueldo: %s\n",
-                   bufferId,
-                   bufferName,
-                   bufferHorasTrabajadas,
-                   bufferSueldo);
         }
-        fclose(pFile);
     }
-    return 1;
+    return retorno;
 }

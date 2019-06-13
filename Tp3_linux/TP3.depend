@@ -147,9 +147,10 @@
 
 1560171531 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master (1)\tp_laboratorio_1-master\tp3_linux\parser.h
 
-1560267598 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\controller.c
+1560452564 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\controller.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"LinkedList.h"
 	"Employee.h"
 	"Controller.h"
@@ -158,37 +159,38 @@
 
 1560171531 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\linkedlist.h
 
-1560173206 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\employee.h
+1560447731 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\employee.h
 
 1560173738 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\controller.h
 
 1560171531 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\parser.h
 
-1560171531 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\validaciones.h
+1560451483 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\validaciones.h
 
-1560178549 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\employee.c
+1560450308 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"validaciones.h"
 
-1560281610 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\main.c
+1560442157 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 
-1560266319 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\parser.c
+1560441208 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 	"Controller.h"
 
-1560267359 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\validaciones.c
+1560452465 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\validaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

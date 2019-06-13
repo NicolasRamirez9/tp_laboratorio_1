@@ -9,5 +9,7 @@ int getName(char* pStr, char* msg, char* msgE,int minimo,int maximo,int reintent
 int isValidint(char* cadena);
 int isValidFloat (char* pStr);
 int isValidName(char* cadena);
+int isValidNumber(char* stringRecibido);
+
 
 #endif // VALIDACIONES_H_INCLUDED

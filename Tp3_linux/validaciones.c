@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "validaciones.h"
+#define EMPTY -1
+#define FULL 1
 
 int getString(char* msg,char* msgE,int minimo,int maximo,int reintentos,char* resultado)
 {
-    int ret = -1;
+    int ret = EMPTY;
     char bufferStr[400];
     if(msg != NULL && msgE != NULL && resultado != NULL && reintentos >=0 && maximo > minimo)
     {
@@ -35,8 +37,8 @@ int getString(char* msg,char* msgE,int minimo,int maximo,int reintentos,char* re
 int getInt(char *msg, char *msgE, int minimo, int maximo, int reintentos, char *resultado)
 {
     char bufferStr[20];
-    int ret = -1;
-    while(ret == -1 && reintentos > 0)
+    int ret = EMPTY;
+    while(ret == EMPTY && reintentos > 0)
     {
         if(!getString(msg, msgE, minimo, maximo, reintentos, bufferStr)&&(resultado != NULL)&&(isValidint(bufferStr)))
         {
@@ -46,7 +48,7 @@ int getInt(char *msg, char *msgE, int minimo, int maximo, int reintentos, char *
         else
         {
             printf("%s",msgE);
-            ret = -1;
+            ret = EMPTY;
         }
     }
     return ret;
@@ -55,8 +57,8 @@ int getInt(char *msg, char *msgE, int minimo, int maximo, int reintentos, char *
 int getFloat(char *msg, char *msgE, char minimo, char maximo, int reintentos, char *resultado)
 {
     char bufferStr[20];
-    int ret = -1;
-    while(ret == -1 && reintentos > 0)
+    int ret = EMPTY;
+    while(ret == EMPTY && reintentos > 0)
     {
         if(!getString(msg, msgE, minimo, maximo, reintentos, bufferStr)&&(isValidFloat(bufferStr)))
         {
@@ -66,7 +68,7 @@ int getFloat(char *msg, char *msgE, char minimo, char maximo, int reintentos, ch
         else
         {
             printf("%s", msgE);
-            ret = -1;
+            ret = EMPTY;
         }
     }
     return ret;
@@ -76,10 +78,10 @@ int getFloat(char *msg, char *msgE, char minimo, char maximo, int reintentos, ch
 
 int getName(char* pStr, char* msg, char* msgE,int minimo,int maximo,int reintentos)
 {
-    int ret = -1;
+    int ret = EMPTY;
     char bufferStr[4096];
 
-    while(ret == -1)
+    while(ret == EMPTY)
     {
         if(msg != NULL &&
            msgE != NULL &&
@@ -107,7 +109,7 @@ int getName(char* pStr, char* msg, char* msgE,int minimo,int maximo,int reintent
 
 int isValidint(char* cadena)
 {
-    int ret = 1;
+    int ret = FULL;
     int i;
     for(i=0; cadena[i] != '\0'; i++)
     {
@@ -118,6 +120,21 @@ int isValidint(char* cadena)
         }
     }
     return ret;
+}
+
+int isValidNumber(char* stringRecibido)     //podrìa necesitar parametros para validar max y min
+{
+    int retorno=1;  // para las funciones isValid arranco con verdadero y cambio cuando encuentro un error
+    int i;
+    for(i=0;stringRecibido[i]!='\0';i++)
+    {
+        if(stringRecibido[i]<'0' || stringRecibido[i]>'9')
+        {
+            retorno=0;
+            break;
+        }
+    }
+    return retorno;
 }
 
 int isValidFloat (char* pStr)
@@ -134,19 +151,19 @@ int isValidFloat (char* pStr)
         if(pStr[i]=='.')
         {
             contadorPuntos++;
-            if(contadorPuntos>1)
+            if(contadorPuntos>FULL)
             {
                 return 0;
             }
         }
         i++;
     }
-    return 1;
+    return FULL;
 }
 
 int isValidName(char* cadena)
 {
-    int ret = 1;
+    int ret = EMPTY;
     int i;
     for(i=0; cadena[i] != '\0'; i++)
     {
