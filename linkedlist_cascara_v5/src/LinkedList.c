@@ -56,7 +56,7 @@ static Node* getNode(LinkedList* this, int nodeIndex)
     Node* pNode = NULL;
     int i;
 
-    if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
+    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this))
     {
         pNode = this->pFirstNode;
         if(pNode != NULL)
@@ -80,21 +80,6 @@ static Node* getNode(LinkedList* this, int nodeIndex)
  */
 Node* test_getNode(LinkedList* this, int nodeIndex)
 {
-    Node* pNode = NULL;
-    int i;
-
-    if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
-    {
-        pNode = this->pFirstNode;
-
-        if(pNode != NULL)
-        {
-            for(i=0; i<nodeIndex; i++)
-            {
-                pNode = pNode->pNextNode;
-            }
-        }
-    }
     return getNode(this, nodeIndex);
 }
 
@@ -160,9 +145,9 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
                         ( 0) Si funciono correctamente
  *
  */
-int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
+int test_addNode(LinkedList* this, int nodeIndex, void* pElement)
 {
-    return addNode(this,nodeIndex,pElement);
+    return addNode(this, nodeIndex, pElement);
 }
 
 
@@ -176,6 +161,9 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
+
+    if(this != NULL && pElement != NULL)
+    {}
 
     return returnAux;
 }
