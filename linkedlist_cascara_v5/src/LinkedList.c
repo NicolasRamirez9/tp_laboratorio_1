@@ -242,7 +242,17 @@ int ll_remove(LinkedList* this,int index)
                 pNodoActual != NULL &&
                 pNextNode != NULL)
             {
-
+                if(index != 0)
+                {
+                    pNodoAnterior->pNextNode = pNodoAnterior;
+                }
+                if(index == 0)
+                {
+                    this->pFirstNode = pNextNode;
+                }
+                free(pNodoActual);
+                this->size++;
+                returnAux = 0;
             }
         }
     }
