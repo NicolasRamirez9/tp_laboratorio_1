@@ -79,7 +79,7 @@ int main()
                     system ("cls");
                     if(flagUno == 0 && flagTexto == 0)
                     {
-                        controller_loadFromBinary("data.csv", listaEmpleados);
+                        controller_loadFromBinary("data.bin", listaEmpleados);
                         flagUno = 1;
                         flagBinario = 1;
                         printf("\n");

@@ -67,27 +67,34 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     int retorno = EMPTY;
-    char bufferId[4096];
-    char bufferName[4096];
-    char bufferWorkedHours[4096];
-    char bufferSalary[4096];
-    Employee *auxEmployee;
-    Employee *pEmployee = NULL;
+    int len;
+    Employee *pEmployee;
 
-    if(pFile != NULL && pArrayListEmployee != NULL)
+    if(pFile !=NULL && pArrayListEmployee !=NULL)
     {
         while(!feof(pFile))
         {
-            fread(&auxEmployee, sizeof(Employee), 1, pFile);
+            pEmployee = employee_new();
 
-            if( !employee_setNombre(pEmployee, bufferName)&&
-                !employee_setHorasTrabajadasStr(pEmployee, bufferWorkedHours)&&
-                !employee_setIdStr(pEmployee, bufferId)&&
-                !employee_setSueldoStr(pEmployee, bufferSalary))
+            if(pEmployee !=NULL)
             {
-                ll_add(pArrayListEmployee, pEmployee);
+                len = fread(pEmployee, sizeof(Employee), 1, pFile);
+
+                if(len < 1)
+                {
+                    if(feof(pFile))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        printf("\n No se pudo leer el archivo correctamente. \n");
+                    }
+                }
+                ll_add(pArrayListEmployee,pEmployee);
             }
-        }retorno = 0;
+        }
+        retorno = 0;
     }
     return retorno;
 }

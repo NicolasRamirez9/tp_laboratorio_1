@@ -50,7 +50,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
     if(path != NULL && pArrayListEmployee != NULL)
     {
-        pFile = fopen(path, "r");
+        pFile = fopen(path, "rb");
 
         if(pFile != NULL)
         {

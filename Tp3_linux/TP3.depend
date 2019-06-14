@@ -147,7 +147,7 @@
 
 1560171531 c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master (1)\tp_laboratorio_1-master\tp3_linux\parser.h
 
-1560536118 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\controller.c
+1560540102 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -176,14 +176,14 @@
 	"Employee.h"
 	"validaciones.h"
 
-1560535626 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\main.c
+1560539485 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 
-1560535828 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\parser.c
+1560540923 source:c:\users\e5eee78\desktop\nueva carpeta\tp_laboratorio_1-master\tp_laboratorio_1-master\tp3_linux\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
