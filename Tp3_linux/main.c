@@ -22,6 +22,9 @@
 int main()
 {
     int option = 0;
+    int flagUno = 0;
+    int flagTexto = 0;
+    int flagBinario = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
 
     do {
@@ -57,53 +60,148 @@ int main()
             {
                 case 1:
                     system ("cls");
-                    controller_loadFromText("data.csv", listaEmpleados);
-                    printf("\n");
-                    printf("\n Cargando datos del archivo data.csv(modo texto)... \n");
-                    printf("\n");
+                    if(flagUno == 0 && flagBinario == 0)
+                    {
+                        controller_loadFromText("data.csv", listaEmpleados);
+                        flagUno = 1;
+                        flagTexto = 1;
+                        printf("\n");
+                        printf("\n Cargando datos del archivo data.csv(modo texto)... \n");
+                        printf("\n");
+                    }
+                    else
+                    {
+                        printf("\n No se puede cargar mas de un archivo. \n");
+                    }
                     break;
 
                 case 2:
                     system ("cls");
-                    controller_loadFromBinary("data.csv", listaEmpleados);
-                    printf("\n");
-                    printf("\n Cargando datos del archivo data.csv(modo binario)... \n");
-                    printf("\n");
+                    if(flagUno == 0 && flagTexto == 0)
+                    {
+                        controller_loadFromBinary("data.csv", listaEmpleados);
+                        flagUno = 1;
+                        flagBinario = 1;
+                        printf("\n");
+                        printf("\n Cargando datos del archivo data.csv(modo binario)... \n");
+                        printf("\n");
+                    }
+                    else
+                    {
+                        printf("\n No se puede cargar mas de un archivo. \n");
+                    }
                     break;
 
                 case 3:
                     system ("cls");
-                    controller_addEmployee(listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        controller_addEmployee(listaEmpleados);
+                    }
+                    else
+                    {
+                        printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 4:
                     system ("cls");
-                    controller_editEmployee(listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        if(ll_len(listaEmpleados) == 0)
+                        {
+                            printf("\n No hay ningun empleado cargado. \n");
+                        }
+                        else
+                        {
+                            controller_editEmployee(listaEmpleados);
+                        }
+                    }
+                    else
+                    {
+                        printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 5:
                     system ("cls");
-                    controller_removeEmployee(listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        if(ll_len(listaEmpleados) == 0)
+                        {
+                            printf("\n No hay ningun empleado cargado para mostrar. \n");
+                        }
+                        else
+                        {
+                            controller_removeEmployee(listaEmpleados);
+                        }
+                    }
+                    else
+                    {
+                        printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 6:
                     system ("cls");
-                    controller_ListEmployee(listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        if(ll_len(listaEmpleados) == 0)
+                        {
+                            printf("\n No hay ningun empleado cargado para mostrar. \n");
+                        }
+                        else
+                        {
+                            controller_ListEmployee(listaEmpleados);
+                        }
+                    }
+                    else
+                    {
+                         printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 7:
                     system ("cls");
-                    controller_sortEmployee(listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        if(ll_len(listaEmpleados) == 0)
+                        {
+                             printf("\n No hay ningun empleado cargado para mostrar. \n");
+                        }
+                        else
+                        {
+                            controller_sortEmployee(listaEmpleados);
+                        }
+                    }
+                    else
+                    {
+                        printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 8:
                     system ("cls");
-                    controller_saveAsText("data.csv", listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        controller_saveAsText("data.csv",listaEmpleados);
+                    }
+                    else
+                    {
+                        printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 9:
                     system ("cls");
-                    controller_saveAsBinary("data.csv", listaEmpleados);
+                    if(flagTexto == 1 || flagBinario == 1)
+                    {
+                        controller_saveAsBinary("data.bin",listaEmpleados);
+                    }
+                    else
+                    {
+                        printf("\n No hay ningun archivo cargado, cargue el archivo primero. \n");
+                    }
                     break;
 
                 case 10:
